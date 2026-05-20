@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omar Dildar — Law x AI x Legal Technology</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Omar Dildar — Law x AI x Legal Technology">
+  <meta property="og:description" content="Law Graduate · SQE1 Candidate · Building at the intersection of law, AI, and legal technology. London.">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://omardildar.github.io">
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Omar Dildar — Law x AI x Legal Technology">
+  <meta name="twitter:description" content="Law Graduate · SQE1 Candidate · Building at the intersection of law, AI, and legal technology. London.">
+  <!-- SEO -->
+  <meta name="description" content="Omar Dildar — Law Graduate, SQE1 Candidate, AI Regulation researcher and legal-tech builder. London.">
+  <meta name="robots"      content="index, follow">
+  <link rel="canonical"    href="https://omardildar.github.io">
+
+  <!-- Favicon: OD monogram in gold -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='3' fill='%230a0a0a'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='13' fill='%23c9a84c'>OD</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #0a0a0a;
+      --bg-soft:    #0f0f0f;
+      --bg-card:    #131318;
+      --border:     #1e1e28;
+      --border-acc: rgba(201,168,76,.22);
+      --text:       #edeae4;
+      --muted:      #787688;
+      --dim:        #2e2d3a;
+      --acc:        #c9a84c;
+      --acc-glow:   rgba(201,168,76,.08);
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+      --mono:       'JetBrains Mono', monospace;
+      --expo:       cubic-bezier(.16,1,.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--sans); font-size: 17px; line-height: 1.65;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4 { font-family: var(--serif); font-weight: 700; line-height: 1.08; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2.5rem; }
+    .section    { padding: 130px 0; }
+    .divider    { height: 1px; background: var(--border); }
+
+    .label {
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--acc);
+      display: block; margin-bottom: .8rem;
+    }
+    .label::before { content: "// "; opacity: .45; }
+
+    /* ── PRELOADER ── */
+    #preloader {
+      position: fixed; inset: 0; z-index: 1000;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity .9s var(--expo);
+    }
+    #preloader.out { opacity: 0; pointer-events: none; }
+    .pre-inner { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .pre-logo  { font-family: var(--mono); font-size: 1.05rem; font-weight: 500; letter-spacing: .12em; color: var(--text); }
+    .pre-logo span { color: var(--acc); }
+    .pre-bar   { width: 120px; height: 1px; background: var(--border); position: relative; overflow: hidden; }
+    .pre-bar-fill {
+      position: absolute; inset: 0; background: var(--acc);
+      transform: scaleX(0); transform-origin: left;
+      animation: preload .7s var(--expo) .2s forwards;
+    }
+    @keyframes preload { to { transform: scaleX(1); } }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: 12px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; padding: .9rem 2rem;
+      border-radius: 3px; transition: all .3s var(--expo);
+      cursor: pointer; border: none; font-family: var(--sans);
+    }
+    .btn-primary { background: var(--acc); color: var(--bg); }
+    .btn-primary:hover { background: #dbbe62; transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--acc); color: var(--acc); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .5s ease, border-color .5s ease;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,.95);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--mono); font-size: 14px; font-weight: 500; letter-spacing: .07em; }
+    .nav-logo span { color: var(--acc); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: .05em; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 11px; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--acc);
+      border: 1px solid var(--acc); padding: .45rem 1.1rem;
+      border-radius: 3px; transition: all .25s;
+    }
+    .nav-cta:hover { background: var(--acc); color: var(--bg); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: .25rem; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all .3s; }
+
+    /* ── MOBILE OVERLAY ── */
+    .mob-nav {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: rgba(10,10,10,.97); backdrop-filter: blur(24px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 3rem;
+    }
+    .mob-nav.open { display: flex; }
+    .mob-nav a { font-family: var(--serif); font-size: 3rem; font-weight: 700; color: var(--text); transition: color .2s; }
+    .mob-nav a:hover { color: var(--acc); }
+    .mob-close {
+      position: absolute; top: 1.75rem; right: 2.5rem;
+      font-family: var(--mono); font-size: 20px; color: var(--muted);
+      background: none; border: none; cursor: pointer;
+    }
+
+    /* ── HERO ── */
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 90% 65% at 68% 55%, rgba(201,168,76,.055) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 4%  88%, rgba(90,50,200,.04)  0%, transparent 50%);
+      will-change: transform;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 66px 66px; opacity: .18;
+      mask-image: radial-gradient(ellipse 75% 80% at 50% 50%, black, transparent);
+    }
+    .hero-content { position: relative; z-index: 1; padding-top: 5rem; }
+
+    .hero-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--acc); margin-bottom: 1.75rem; visibility: hidden; }
+    .hero-name    { font-size: clamp(4.5rem, 11vw, 9.5rem); font-weight: 700; line-height: .9; margin-bottom: 2rem; }
+    .hero-name-first { display: block; }
+    .hero-name-last  { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--text); }
+    .word            { display: inline-block; visibility: hidden; }
+    .hero-tagline { font-size: clamp(1rem, 1.8vw, 1.2rem); font-weight: 300; color: var(--muted); max-width: 580px; margin-bottom: 2.75rem; line-height: 1.75; visibility: hidden; }
+    .hero-pills   { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 3.25rem; }
+    .hero-pill    { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: var(--muted); border: 1px solid var(--border); padding: .3rem .8rem; border-radius: 2px; visibility: hidden; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-actions .btn { visibility: hidden; }
+    .hero-scroll  { position: absolute; bottom: 2.25rem; left: 50%; transform: translateX(-50%); text-align: center; visibility: hidden; }
+    .scroll-line  { width: 1px; height: 52px; margin: 0 auto; background: linear-gradient(to bottom, var(--acc), transparent); animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+
+    /* ── STATS ── */
+    .stats-strip { padding: 90px 0; background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-grid  { display: grid; grid-template-columns: repeat(4,1fr); text-align: center; }
+    .stat        { padding: 2rem 1rem; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--acc); line-height: 1; margin-bottom: .5rem; }
+    .stat-sup { font-size: .45em; vertical-align: super; }
+    .stat-lbl { font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
+    .s-heading  { font-size: clamp(2rem, 4vw, 3.1rem); margin-bottom: 1.5rem; }
+    .about-body { color: var(--muted); font-size: 1.05rem; line-height: 1.9; margin-bottom: 1.4rem; }
+    .attr-list  { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 2rem; }
+    .attr {
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      letter-spacing: .04em; color: var(--acc);
+      background: var(--acc-glow); border: 1px solid var(--border-acc);
+      padding: .32rem .75rem; border-radius: 2px;
+    }
+
+    /* ── ABOUT PHOTO ── */
+    .about-photo-wrap {
+      margin-bottom: 2rem; border-radius: 6px; overflow: hidden;
+      border: 1px solid var(--border); position: relative;
+    }
+    .about-photo { width: 100%; display: block; filter: grayscale(15%); transition: filter .4s; }
+    .about-photo:hover { filter: grayscale(0%); }
+
+    /* ── EVIDENCE BLOCK (replaces percentage bars) ── */
+    .evidence-block {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; overflow: hidden; position: relative;
+    }
+    .evidence-block::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--acc), transparent);
+    }
+    .ev-header {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--acc); padding: 1.25rem 1.75rem .75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .ev-item {
+      display: grid; grid-template-columns: 130px 1fr; gap: 1rem;
+      padding: 1.1rem 1.75rem; border-bottom: 1px solid var(--border); align-items: start;
+    }
+    .ev-item:last-child { border-bottom: none; }
+    .ev-skill { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .06em; color: var(--acc); padding-top: .15rem; }
+    .ev-proof { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── CURRENT FOCUS CARD ── */
+    .cf-card {
+      background: var(--bg-card); border: 1px solid var(--border-acc);
+      border-radius: 6px; padding: 2rem 2.5rem; margin-bottom: 4rem;
+      position: relative; overflow: hidden;
+    }
+    .cf-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--acc), transparent);
+    }
+    .cf-tag { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--acc); margin-bottom: .65rem; }
+    .cf-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: .65rem; }
+    .cf-period { font-family: var(--mono); font-size: 11px; color: var(--acc); font-weight: 400; margin-left: .75rem; opacity: .75; }
+    .cf-body { font-size: 13.5px; color: var(--muted); line-height: 1.8; }
+
+    /* ── TIMELINE ── */
+    .timeline   { position: relative; padding-left: 2.5rem; }
+    .tl-track   { position: absolute; left: 0; top: .5rem; bottom: 0; width: 1px; background: var(--border); transform-origin: top; transform: scaleY(0); }
+    .tl-item    { position: relative; padding-bottom: 3.5rem; }
+    .tl-dot     { position: absolute; left: -2.5rem; top: .45rem; width: 9px; height: 9px; background: var(--acc); border-radius: 50%; box-shadow: 0 0 10px rgba(201,168,76,.55); }
+    .tl-dot::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(201,168,76,.28); }
+    .tl-period  { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--acc); margin-bottom: .4rem; }
+    .tl-title   { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: .25rem; }
+    .tl-co      { font-size: 13px; color: var(--muted); margin-bottom: 1rem; }
+    .tl-list    { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+    .tl-list li { font-size: 13.5px; color: var(--muted); padding-left: 1.1rem; position: relative; line-height: 1.7; }
+    .tl-list li::before { content: '—'; position: absolute; left: 0; color: var(--acc); opacity: .45; }
+
+    /* ── SIGNALS ── */
+    .r-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+    .r-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 2.25rem; position: relative; overflow: hidden;
+      transition: border-color .3s var(--expo), transform .3s var(--expo);
+    }
+    .r-card:hover { border-color: var(--border-acc); transform: translateY(-4px); }
+    .r-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--acc), transparent);
+      transform: scaleX(0); transform-origin: left; transition: transform .4s var(--expo);
+    }
+    .r-card:hover::after { transform: scaleX(1); }
+    .r-cat   { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--acc); margin-bottom: .75rem; }
+    .r-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: .75rem; line-height: 1.25; }
+    .r-desc  { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+    /* ── RESEARCH SECTION ── */
+    .research-main { max-width: 760px; }
+    .pull-quote {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.7;
+      color: var(--acc); border-left: 2px solid var(--acc);
+      padding: 1.5rem 0 1.5rem 2rem; margin-bottom: 2.75rem;
+    }
+    .research-abstract p { color: var(--muted); font-size: 1.0rem; line-height: 1.9; margin-bottom: 1.25rem; }
+    .research-abstract p:first-child::first-letter {
+      font-family: var(--serif); font-size: 3.5em; font-weight: 700; color: var(--acc);
+      float: left; line-height: .75; margin: .1em .15em 0 0;
+    }
+    .research-findings { margin: 2.75rem 0; }
+    .findings-label { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--acc); margin-bottom: 1.25rem; }
+    .findings-list { list-style: none; display: flex; flex-direction: column; gap: .9rem; }
+    .findings-list li { font-size: 14px; color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.75; }
+    .findings-list li::before { content: '—'; position: absolute; left: 0; color: var(--acc); opacity: .55; }
+    .research-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 2rem; }
+    .research-dl { margin-top: 2.5rem; }
+
+    /* ── PROJECTS SECTION ── */
+    .projects-grid { display: flex; flex-direction: column; gap: 3rem; }
+    .proj-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 2.5rem; position: relative; overflow: hidden;
+      transition: border-color .3s var(--expo);
+    }
+    .proj-card:hover { border-color: var(--border-acc); }
+    .proj-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--acc), transparent);
+    }
+    .proj-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: .5rem; }
+    .proj-cat    { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--acc); }
+    .proj-status { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: var(--muted); border: 1px solid var(--border); padding: .2rem .65rem; border-radius: 2px; }
+    .proj-title  { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 2rem; }
+    .proj-body   { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .proj-block-label { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--acc); margin-bottom: .6rem; }
+    .proj-block p { font-size: 13.5px; color: var(--muted); line-height: 1.75; }
+    .proj-image  {
+      border: 1px dashed var(--border); border-radius: 4px; height: 120px;
+      display: flex; align-items: center; justify-content: center; margin-top: 1rem;
+    }
+    .proj-img-placeholder { font-family: var(--mono); font-size: 11px; color: var(--dim); letter-spacing: .1em; }
+
+    /* ── SKILLS — CAPABILITY LIST (replaces percentage radials) ── */
+    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .cap-list { display: flex; flex-direction: column; }
+    .cap-item { padding: 1.1rem 0; border-bottom: 1px solid var(--border); }
+    .cap-item:last-child { border-bottom: none; }
+    .cap-skill { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--acc); margin-bottom: .35rem; }
+    .cap-proof { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .skill-grp   { margin-bottom: 2rem; }
+    .skill-grp-h { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .tag  { font-size: 12px; font-weight: 500; color: var(--text); background: var(--bg-card); border: 1px solid var(--border); padding: .3rem .7rem; border-radius: 2px; transition: border-color .2s, color .2s; }
+    .tag:hover { border-color: var(--acc); color: var(--acc); }
+    .tag.hi { color: var(--acc); background: var(--acc-glow); border-color: var(--border-acc); }
+
+    /* ── EDUCATION ── */
+    .edu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+    .edu-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 2.5rem; position: relative; overflow: hidden;
+      transition: transform .3s var(--expo), border-color .3s;
+    }
+    .edu-card:hover { transform: translateY(-4px); border-color: var(--border-acc); }
+    .edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--acc), transparent); }
+    .edu-deg  { font-family: var(--serif); font-size: 1.15rem; margin-bottom: .5rem; }
+    .edu-inst { font-size: 13px; color: var(--muted); margin-bottom: .35rem; }
+    .edu-yr   { font-family: var(--mono); font-size: 11px; color: var(--acc); margin-bottom: 1.2rem; }
+    .edu-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .edu-list li { font-size: 13px; color: var(--muted); padding-left: 1rem; position: relative; }
+    .edu-list li::before { content: '·'; position: absolute; left: 0; color: var(--acc); }
+
+    /* ── LAW x COMBAT ── */
+    .combat-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: center; }
+    .combat-image-wrap {
+      border-radius: 6px; overflow: hidden; border: 1px solid var(--border);
+      aspect-ratio: 4/5; position: relative;
+    }
+    .combat-photo {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block; filter: grayscale(12%); transition: filter .4s;
+    }
+    .combat-photo:hover { filter: grayscale(0%); }
+
+    /* ── NOTES SECTION ── */
+    .notes-coming {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 5rem 3rem; text-align: center;
+      position: relative; overflow: hidden; max-width: 680px; margin: 0 auto;
+    }
+    .notes-coming::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, transparent, var(--acc), transparent);
+    }
+    .notes-icon { font-family: var(--mono); font-size: 2rem; font-weight: 500; color: var(--acc); opacity: .3; margin-bottom: 1.5rem; letter-spacing: .1em; }
+    .notes-coming-text { font-size: 1.05rem; color: var(--muted); line-height: 1.9; }
+    .notes-coming-text strong { color: var(--text); font-weight: 500; }
+
+    /* ── DIRECTION ── */
+    .direction-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .dir-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 2.5rem; position: relative; overflow: hidden;
+    }
+    .dir-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--acc), transparent);
+    }
+    .dir-heading { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--acc); margin-bottom: 1.25rem; }
+    .dir-tags    { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .dir-tag {
+      font-family: var(--mono); font-size: 11px; color: var(--muted);
+      border: 1px solid var(--border); padding: .28rem .65rem; border-radius: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .dir-tag:hover { color: var(--acc); border-color: var(--border-acc); }
+
+    /* ── CONTACT ── */
+    .contact-wrap { text-align: center; background: var(--bg-soft); border-top: 1px solid var(--border); }
+    .contact-h { font-size: clamp(2.8rem,6vw,5.5rem); margin-bottom: 1.5rem; }
+    .contact-p { font-size: 1.1rem; color: var(--muted); max-width: 520px; margin: 0 auto 3rem; line-height: 1.85; }
+    .contact-row { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer { padding: 2rem 2.5rem; text-align: center; border-top: 1px solid var(--border); }
+    footer p { font-family: var(--mono); font-size: 11px; color: var(--dim); letter-spacing: .1em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .about-grid, .skills-layout, .direction-grid, .combat-layout { grid-template-columns: 1fr; gap: 4rem; }
+      .r-grid-3, .edu-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .ev-item { grid-template-columns: 1fr; gap: .3rem; }
+      .combat-img-placeholder { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .section { padding: 80px 0; }
+      .proj-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── PRELOADER ── -->
+<div id="preloader">
+  <div class="pre-inner">
+    <div class="pre-logo">omar<span>.</span>d</div>
+    <div class="pre-bar"><div class="pre-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">omar<span>.</span>d</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#direction">Direction</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:o.dildar@outlook.com" class="nav-cta">Hire Me</a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" id="mobClose">✕</button>
+  <a href="#about"      onclick="closeMob()">About</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#research"   onclick="closeMob()">Research</a>
+  <a href="#projects"   onclick="closeMob()">Projects</a>
+  <a href="#direction"  onclick="closeMob()">Direction</a>
+  <a href="#contact"    onclick="closeMob()">Contact</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-content">
+    <p class="hero-eyebrow" id="eyebrow">Available · London · Law x AI x Legal Technology</p>
+    <h1 class="hero-name">
+      <span class="hero-name-first">Omar</span>
+      <span class="hero-name-last">Dildar</span>
+    </h1>
+    <p class="hero-tagline" id="tagline">
+      Law Graduate &nbsp;·&nbsp; SQE1 Candidate &nbsp;·&nbsp; Law x AI x Legal Technology
+    </p>
+    <div class="hero-pills">
+      <span class="hero-pill">LLB 2:1 — St Mary's University</span>
+      <span class="hero-pill">EU AI Act Research</span>
+      <span class="hero-pill">SQE1 Jan 2027</span>
+      <span class="hero-pill">AI Workflow Projects</span>
+      <span class="hero-pill">Taekwondo · MMA</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#projects" class="btn btn-ghost">View Projects</a>
+    </div>
+  </div>
+  <div class="hero-scroll" id="heroScroll">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="stats-strip" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="150">0</span><span class="stat-sup">+</span></div>
+        <div class="stat-lbl">Students Coached</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="10">0</span><span class="stat-sup">k</span></div>
+        <div class="stat-lbl">Word Dissertation</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="3">0</span><span class="stat-sup">rd</span></div>
+        <div class="stat-lbl">Moot Court Rank</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2<span class="stat-sup" style="font-size:.38em">:</span>1</div>
+        <div class="stat-lbl">LLB Honours</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <span class="label">Profile</span>
+        <h2 class="s-heading">
+          Law x AI x Technology.<br>
+          <em>Precision meets ambition.</em>
+        </h2>
+        <p class="about-body">
+          I don't just study the law of AI — I build with it. Using Claude, Claude Code,
+          VS Code, n8n, and Zapier, I'm developing AI-assisted legal workflows: SQE
+          performance intelligence systems, document generation pipelines, and client-intake
+          automation. That intersection of legal rigour and technical capability is where
+          I operate.
+        </p>
+        <p class="about-body">
+          London-based law graduate and SQE1 candidate (January 2027). My LLB dissertation
+          examined the EU AI Act's alignment with GDPR — analysing biometric mass surveillance,
+          social scoring, and manipulative AI prohibitions against the Act's risk-classification
+          framework. Research interests: algorithmic accountability, AI governance, and the
+          compliance architecture emerging around responsible AI.
+        </p>
+        <div class="attr-list">
+          <span class="attr">Legal Research</span>
+          <span class="attr">AI Regulation</span>
+          <span class="attr">AI Governance</span>
+          <span class="attr">Legal Tech Build</span>
+          <span class="attr">GDPR Compliance</span>
+          <span class="attr">Legal Operations</span>
+          <span class="attr">MMA / Combat Sports</span>
+        </div>
+      </div>
+      <div>
+        <div class="about-photo-wrap">
+          <img src="photo-professional.jpg" alt="Omar Dildar" class="about-photo">
+        </div>
+        <div class="evidence-block">
+          <div class="ev-header">// capability evidence</div>
+          <div class="ev-item">
+            <div class="ev-skill">Legal Research</div>
+            <div class="ev-proof">Westlaw · LexisNexis · 10,000-word LLB dissertation on EU AI Act & GDPR alignment</div>
+          </div>
+          <div class="ev-item">
+            <div class="ev-skill">AI Regulation</div>
+            <div class="ev-proof">EU AI Act, GDPR, biometric surveillance, social scoring, fundamental rights frameworks</div>
+          </div>
+          <div class="ev-item">
+            <div class="ev-skill">Legal-Tech Build</div>
+            <div class="ev-proof">Claude Code, n8n, Zapier · SQE tracking, research pipeline, intake automation in development</div>
+          </div>
+          <div class="ev-item">
+            <div class="ev-skill">Advocacy</div>
+            <div class="ev-proof">Moot Court Finalist · 3rd of 20+ teams · highest-ranked undergraduate · oral argument</div>
+          </div>
+          <div class="ev-item">
+            <div class="ev-skill">Client Service</div>
+            <div class="ev-proof">Burberry, Foxtons, Hawes & Curtis · AML/KYC, regulated transactions, GDPR-compliant records</div>
+          </div>
+          <div class="ev-item">
+            <div class="ev-skill">Languages</div>
+            <div class="ev-proof">English (native) · Dari (native) · Farsi (native)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EXPERIENCE ── -->
+<section class="section" id="experience">
+  <div class="container">
+    <span class="label">Work Experience</span>
+    <h2 class="s-heading" style="margin-bottom:4rem;">
+      A record of delivery across<br>
+      <em>law, commerce, and client service.</em>
+    </h2>
+
+    <!-- Current Focus callout -->
+    <div class="cf-card" id="cfCard">
+      <div class="cf-tag">// Current Focus</div>
+      <div class="cf-title">
+        SQE1 Preparation &amp; Legal-Tech Build
+        <span class="cf-period">2025 — Present</span>
+      </div>
+      <p class="cf-body">
+        Preparing for SQE1 (January 2027) through structured daily study across FLK1 and FLK2
+        subject areas, alongside building AI-assisted legal workflow systems. Income from
+        Amazon Flex maintains financial discipline while keeping focus on long-term legal
+        career trajectory. See Projects section for detail on the build work.
+      </p>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <div class="tl-track" id="tlTrack"></div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Jul 2025 — Present</div>
+        <h3 class="tl-title">Delivery Driver</h3>
+        <p class="tl-co">Amazon Flex · London</p>
+        <ul class="tl-list">
+          <li>100% on-time delivery rate across 50+ daily stops in high-density London routes</li>
+          <li>Resolve address discrepancies and customer queries independently under time pressure</li>
+          <li>Operate with full accountability for delivery accuracy, records, and customer resolution</li>
+          <li>Manage route planning with systematic efficiency — sustained output under operational pressure</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">May 2025 — Jul 2025</div>
+        <h3 class="tl-title">Real Estate Sales Negotiator</h3>
+        <p class="tl-co">Foxtons · Watford</p>
+        <ul class="tl-list">
+          <li>Registered buyer applicants — AML checks, ID verification, financial due diligence</li>
+          <li>Advised on contractual terms, conveyancing timelines, and property documentation</li>
+          <li>Maintained client records and case progression notes under compliance standards</li>
+          <li>Supported regulated property transactions requiring accuracy, follow-up and document awareness</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Mar 2025 — May 2025</div>
+        <h3 class="tl-title">Suit Specialist</h3>
+        <p class="tl-co">Hawes & Curtis · Oxford Street</p>
+        <ul class="tl-list">
+          <li>Delivered bespoke client consultations, advising on specifications, alterations and terms</li>
+          <li>Processed transactions and maintained records with accuracy, systems use and compliance</li>
+          <li>Built client rapport in a premium retail environment requiring judgement and attention to detail</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Sep 2024 — Sep 2025</div>
+        <h3 class="tl-title">Taekwondo Coach</h3>
+        <p class="tl-co">London Taekwondo Academy</p>
+        <ul class="tl-list">
+          <li>Instructed 150+ students across age groups, enforcing safety protocols and Kukkiwon standards</li>
+          <li>Maintained grading records and assessments with documentation accuracy</li>
+          <li>Applied structured feedback and objective criteria to support student progression</li>
+          <li>Delivered technical instruction under live conditions — composure and communication under pressure</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Feb 2024 — Aug 2024</div>
+        <h3 class="tl-title">Client Advisor</h3>
+        <p class="tl-co">Burberry · Heathrow Terminal 3</p>
+        <ul class="tl-list">
+          <li>Processed 100+ returns, warranty claims and refunds in compliance with UK consumer law</li>
+          <li>Handled customer data and transaction histories under GDPR-compliant processes</li>
+          <li>Advised international clients on cross-border purchase terms and duty implications</li>
+          <li>Maintained accurate after-sales records and audit trails in a high-pressure environment</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">Jul 2021 — Jul 2023</div>
+        <h3 class="tl-title">Style Advisor</h3>
+        <p class="tl-co">Moss Bros · Wembley Outlet</p>
+        <ul class="tl-list">
+          <li>Advised customers on formalwear selection, hire services and product suitability</li>
+          <li>Processed transactions, resolved complaints and maintained brand standards across two years</li>
+          <li>Developed long-term client service, complaint handling and sales communication experience</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── LAW x AI SIGNALS ── -->
+<section class="section" id="signals">
+  <div class="container">
+    <span class="label">Law x AI Signals</span>
+    <h2 class="s-heading" style="margin-bottom:3.5rem;">
+      Credentials at the intersection<br>
+      <em>of law and artificial intelligence.</em>
+    </h2>
+    <div class="r-grid-3">
+      <div class="r-card">
+        <div class="r-cat">Academic Research · LLB Final Year · 2024</div>
+        <h3 class="r-title">EU AI Act — GDPR Alignment & Regulatory Architecture</h3>
+        <p class="r-desc">
+          A 10,000-word dissertation examining the EU AI Act's alignment with GDPR. Analysed
+          the prohibition of biometric mass surveillance, social scoring systems, manipulative
+          AI, and fundamental rights protections — with cross-border compliance analysis
+          including UK regulatory divergence post-Brexit.
+        </p>
+      </div>
+      <div class="r-card">
+        <div class="r-cat">Advocacy · St Mary's University · 2023</div>
+        <h3 class="r-title">Moot Court Finalist — Defence Advocacy</h3>
+        <p class="r-desc">
+          Ranked 3rd of 20+ competing teams — highest-ranked undergraduate. Led defence
+          advocacy in a criminal trial simulation: case construction, statutory interpretation,
+          oral argument, and courtroom composure at competition level.
+        </p>
+      </div>
+      <div class="r-card">
+        <div class="r-cat">Legal-Tech Build · 2026</div>
+        <h3 class="r-title">AI-Assisted Legal Workflow Systems</h3>
+        <p class="r-desc">
+          Developing AI-powered systems at the intersection of law and technology: SQE
+          performance tracking, AI-assisted research pipelines, document generation
+          workflows, and client-intake automation. Built using Claude, Claude Code,
+          n8n, Zapier, and prompt engineering.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── RESEARCH ── -->
+<section class="section" id="research">
+  <div class="container">
+    <span class="label">Research</span>
+    <h2 class="s-heading" style="margin-bottom:3.5rem;">
+      EU AI Act &amp; GDPR Alignment<br>
+      <em>LLB Dissertation · 10,000 words · 2024</em>
+    </h2>
+    <div class="research-main">
+      <div class="pull-quote">
+        "The EU AI Act represents the world's first comprehensive attempt to regulate artificial
+        intelligence by risk — but its interaction with GDPR creates significant compliance
+        complexity that existing frameworks are ill-equipped to resolve."
+      </div>
+      <div class="research-abstract">
+        <p>
+          This dissertation examines the regulatory architecture established by the EU AI Act
+          and its alignment — and points of tension — with the General Data Protection
+          Regulation. The analysis focuses on four prohibited AI practices: biometric mass
+          surveillance, social scoring systems, manipulative AI techniques, and exploitation
+          of vulnerable groups, evaluating how each interacts with GDPR's established rights
+          framework.
+        </p>
+        <p>
+          The research maps the Act's risk-classification system (unacceptable, high, limited,
+          minimal) against existing data protection obligations, identifying where the two
+          regimes complement each other and where they produce conflicting compliance
+          requirements. Special attention is given to the fundamental rights implications of
+          algorithmic decision-making and the accountability gaps that emerge when AI outputs
+          affect legal interests without triggering clear regulatory oversight.
+        </p>
+        <p>
+          Cross-border compliance is a recurring theme — particularly the UK's regulatory
+          divergence post-Brexit, which creates a fragmented landscape for AI deployment
+          across the Channel. The dissertation concludes with an assessment of the Act's
+          adequacy as a framework for governing responsible AI in data-intensive environments,
+          and the governance questions it leaves unresolved.
+        </p>
+      </div>
+      <div class="research-findings">
+        <div class="findings-label">// Key Findings</div>
+        <ul class="findings-list">
+          <li>GDPR's data minimisation principle conflicts with AI systems requiring large training datasets — the Act provides no clear resolution mechanism</li>
+          <li>Biometric surveillance prohibitions create compliance uncertainty for facial recognition deployed in nominally private contexts</li>
+          <li>Social scoring prohibitions apply only to public authorities — private sector equivalents remain largely ungoverned</li>
+          <li>The Act's risk tiers do not map cleanly to GDPR's special category data protections, creating dual-compliance overhead</li>
+          <li>UK post-Brexit divergence means EU-based AI providers face asymmetric obligations when operating across the Channel</li>
+          <li>Algorithmic accountability obligations remain insufficiently defined to support meaningful legal challenge by affected individuals</li>
+        </ul>
+      </div>
+      <div class="research-tags">
+        <span class="attr">EU AI Act</span>
+        <span class="attr">GDPR</span>
+        <span class="attr">Biometric Surveillance</span>
+        <span class="attr">Social Scoring</span>
+        <span class="attr">Fundamental Rights</span>
+        <span class="attr">Algorithmic Accountability</span>
+        <span class="attr">Cross-Border Compliance</span>
+      </div>
+      <div class="research-dl">
+        <a href="dissertation.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+          Download Dissertation PDF
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PROJECTS ── -->
+<section class="section" id="projects">
+  <div class="container">
+    <span class="label">Projects</span>
+    <h2 class="s-heading" style="margin-bottom:3.5rem;">
+      Building at the intersection<br>
+      <em>of law and AI.</em>
+    </h2>
+    <div class="projects-grid">
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-cat">SQE Performance Tracking · 2025–2026</div>
+          <div class="proj-status">In Development</div>
+        </div>
+        <h3 class="proj-title">SQE1 Performance Intelligence System</h3>
+        <div class="proj-body">
+          <div class="proj-block">
+            <div class="proj-block-label">Problem</div>
+            <p>SQE1 preparation spans 6+ subjects across two sittings. Standard revision tracking is linear — no system exists to surface weak topic clusters, predict performance trajectories, or adapt study priorities in real time.</p>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Approach</div>
+            <p>Building a Claude-powered performance tracking system that ingests mock question results, identifies recurring error patterns by topic and question type, and generates adaptive revision schedules. Flags high-risk topics before each weekly study block.</p>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Stack</div>
+            <div class="tags" style="margin-top:.5rem;">
+              <span class="tag hi">Claude</span><span class="tag hi">Claude Code</span>
+              <span class="tag">n8n</span><span class="tag">Zapier</span><span class="tag">Prompt Engineering</span>
+            </div>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Outcome</div>
+            <p>Initial version in use for FLK1 preparation. Reduces time on already-mastered content; increases revision precision by surfacing genuine weak points ahead of each study session.</p>
+          </div>
+        </div>
+        <div class="proj-image" data-todo="add-screenshot">
+          <span class="proj-img-placeholder">// screenshot coming</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-cat">Legal Research Pipeline · 2026</div>
+          <div class="proj-status">Prototype</div>
+        </div>
+        <h3 class="proj-title">AI-Assisted Legal Research Pipeline</h3>
+        <div class="proj-body">
+          <div class="proj-block">
+            <div class="proj-block-label">Problem</div>
+            <p>Legal research is time-intensive: identifying relevant case law, synthesising multiple sources, and structuring arguments across Westlaw and LexisNexis requires sustained concentration. Junior legal professionals spend disproportionate time on retrieval rather than analysis.</p>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Approach</div>
+            <p>An AI-assisted pipeline that takes a legal question as input and outputs a structured research brief: relevant statutes, key cases, conflicting authorities, and an initial argument map. Built to complement — not replace — professional legal judgment.</p>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Stack</div>
+            <div class="tags" style="margin-top:.5rem;">
+              <span class="tag hi">Claude</span><span class="tag hi">Claude Code</span>
+              <span class="tag hi">Westlaw</span><span class="tag">Doc Gen</span><span class="tag">Prompt Engineering</span>
+            </div>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Outcome</div>
+            <p>Prototype stage. Research brief generation reduces initial retrieval time significantly. Ongoing refinement to improve citation accuracy and jurisdictional specificity for UK law.</p>
+          </div>
+        </div>
+        <div class="proj-image" data-todo="add-screenshot">
+          <span class="proj-img-placeholder">// screenshot coming</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-header">
+          <div class="proj-cat">Client-Intake Automation · 2026</div>
+          <div class="proj-status">Concept</div>
+        </div>
+        <h3 class="proj-title">Client-Intake Automation for Small Law Firms</h3>
+        <div class="proj-body">
+          <div class="proj-block">
+            <div class="proj-block-label">Problem</div>
+            <p>Small legal practices spend significant time on routine intake: conflict checks, client questionnaires, document collection, and matter-opening. This work is rule-bound and largely automatable, but existing solutions are expensive enterprise software.</p>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Approach</div>
+            <p>A lightweight intake automation system for small law firms: AI-driven questionnaire, automatic conflict-check flagging, document request generation, and initial matter summary. Compliance-aware throughout — AML and SRA requirements built into the workflow.</p>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Stack</div>
+            <div class="tags" style="margin-top:.5rem;">
+              <span class="tag">n8n</span><span class="tag">Zapier</span>
+              <span class="tag hi">Claude</span><span class="tag">Doc Gen</span><span class="tag">Workflow Automation</span>
+            </div>
+          </div>
+          <div class="proj-block">
+            <div class="proj-block-label">Outcome</div>
+            <p>Conceptual design complete. Seeking a small firm or legal clinic as a pilot partner to test the workflow against real intake requirements and SRA compliance constraints.</p>
+          </div>
+        </div>
+        <div class="proj-image" data-todo="add-screenshot">
+          <span class="proj-img-placeholder">// screenshot coming</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SKILLS ── -->
+<section class="section" id="skills">
+  <div class="container">
+    <span class="label">Skills & Expertise</span>
+    <h2 class="s-heading" style="margin-bottom:3.5rem;">
+      Where legal rigour<br>
+      <em>meets technical fluency.</em>
+    </h2>
+    <div class="skills-layout">
+      <div>
+        <div class="skill-grp-h" style="margin-bottom:1.5rem;">// capability evidence</div>
+        <div class="cap-list">
+          <div class="cap-item">
+            <div class="cap-skill">Legal Research</div>
+            <div class="cap-proof">Westlaw · LexisNexis · 10,000-word LLB dissertation · case analysis and statutory interpretation</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-skill">AI Regulation</div>
+            <div class="cap-proof">EU AI Act, GDPR, biometric surveillance, social scoring, fundamental rights — published dissertation</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-skill">Legal-Tech Build</div>
+            <div class="cap-proof">Claude Code, n8n, Zapier · SQE tracking system, research pipeline, intake automation in development</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-skill">Advocacy</div>
+            <div class="cap-proof">Moot Court Finalist · 3rd of 20+ teams · highest-ranked undergraduate · oral argument under pressure</div>
+          </div>
+          <div class="cap-item">
+            <div class="cap-skill">Regulated Transactions</div>
+            <div class="cap-proof">AML / KYC checks, GDPR-compliant data handling, conveyancing documentation — Foxtons and Burberry</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-grp">
+          <div class="skill-grp-h">AI Tools</div>
+          <div class="tags">
+            <span class="tag hi">Claude</span><span class="tag hi">Claude Code</span>
+            <span class="tag hi">ChatGPT</span><span class="tag hi">VS Code</span>
+          </div>
+        </div>
+        <div class="skill-grp">
+          <div class="skill-grp-h">Automation</div>
+          <div class="tags">
+            <span class="tag">Prompt Engineering</span><span class="tag">n8n</span>
+            <span class="tag">Zapier</span><span class="tag">Doc Gen</span>
+          </div>
+        </div>
+        <div class="skill-grp">
+          <div class="skill-grp-h">Legal-Tech / Research</div>
+          <div class="tags">
+            <span class="tag hi">Westlaw</span><span class="tag hi">LexisNexis</span>
+            <span class="tag">Case Analysis</span><span class="tag">GDPR</span>
+            <span class="tag hi">AI Governance</span><span class="tag">AI Research</span>
+          </div>
+        </div>
+        <div class="skill-grp">
+          <div class="skill-grp-h">Software</div>
+          <div class="tags">
+            <span class="tag">Word</span><span class="tag">Excel</span>
+            <span class="tag">PowerPoint</span><span class="tag">Outlook</span>
+            <span class="tag">CRM</span><span class="tag">LaTeX</span>
+          </div>
+        </div>
+        <div class="skill-grp">
+          <div class="skill-grp-h">Languages</div>
+          <div class="tags">
+            <span class="tag hi">English (Native)</span>
+            <span class="tag hi">Dari (Native)</span>
+            <span class="tag hi">Farsi (Native)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EDUCATION ── -->
+<section class="section" id="education">
+  <div class="container">
+    <span class="label">Education & Credentials</span>
+    <h2 class="s-heading" style="margin-bottom:3.5rem;">
+      Built on rigorous<br>
+      <em>academic foundations.</em>
+    </h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-deg">LLB (Hons) Law — 2:1</div>
+        <div class="edu-inst">St Mary's University, London</div>
+        <div class="edu-yr">Sep 2021 — Jun 2024</div>
+        <ul class="edu-list">
+          <li>Criminal Justice — 73%</li>
+          <li>Legal Process — 68%</li>
+          <li>Contract Law — 67%</li>
+          <li>Dissertation: EU AI Act & GDPR</li>
+          <li>Moot Court Finalist (3rd / 20+)</li>
+        </ul>
+      </div>
+      <div class="edu-card">
+        <div class="edu-deg">SQE1 Preparation</div>
+        <div class="edu-inst">University of Law</div>
+        <div class="edu-yr">Sitting January 2027</div>
+        <ul class="edu-list">
+          <li>Solicitors Qualifying Examination</li>
+          <li>FLK1: Business Law, Dispute Resolution, Property</li>
+          <li>FLK2: Criminal Practice, Wills & Probate</li>
+          <li>Preparing for solicitor qualification and QWE pathway</li>
+          <li>Westlaw UK Basic Certification — in progress</li>
+        </ul>
+      </div>
+      <div class="edu-card">
+        <div class="edu-deg">1st Dan Black Belt</div>
+        <div class="edu-inst">Kukkiwon — World Taekwondo HQ</div>
+        <div class="edu-yr">Certified March 2019 · Preparing for 2nd Dan</div>
+        <ul class="edu-list">
+          <li>Internationally certified by Kukkiwon</li>
+          <li>Taekwondo and MMA training</li>
+          <li>Coaching 150+ students</li>
+          <li>Discipline, resilience and composure under pressure</li>
+          <li>Performance psychology — training under high-stress conditions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── LAW x COMBAT ── -->
+<section class="section" id="combat">
+  <div class="container">
+    <div class="combat-layout">
+      <div class="combat-image-wrap">
+        <img src="photo-mma.jpg" alt="Omar Dildar — The Gauntlet Fight Academy" class="combat-photo">
+      </div>
+      <div>
+        <span class="label">Law x Combat</span>
+        <h2 class="s-heading">
+          Pressure is a skill.<br>
+          <em>Not just a circumstance.</em>
+        </h2>
+        <p class="about-body">
+          Kukkiwon 1st Dan Black Belt. Preparing for 2nd Dan. Seven years of competitive
+          Taekwondo and MMA training have produced something more transferable than technique:
+          the ability to perform under scrutiny, recover from setbacks at speed, and maintain
+          composure when the outcome is uncertain.
+        </p>
+        <p class="about-body">
+          Coaching 150+ students at London Taekwondo Academy taught a different discipline —
+          communicating precision under time pressure, maintaining objectivity when assessing
+          performance, and holding standards without compromise. The same cognitive demands as
+          a courtroom or a client matter. Different venue.
+        </p>
+        <div class="attr-list">
+          <span class="attr">Kukkiwon 1st Dan</span>
+          <span class="attr">150+ Students Coached</span>
+          <span class="attr">MMA Training</span>
+          <span class="attr">Performance Under Pressure</span>
+          <span class="attr">Competition Experience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── NOTES ── -->
+<section class="section" id="notes">
+  <div class="container">
+    <span class="label">Notes & Writing</span>
+    <h2 class="s-heading" style="margin-bottom:3rem;">
+      Thinking out loud on<br>
+      <em>law, AI, and SQE prep.</em>
+    </h2>
+    <div class="notes-coming">
+      <div class="notes-icon">// 01</div>
+      <p class="notes-coming-text">
+        Notes on AI regulation, legal-tech builds, and SQE preparation.<br>
+        <strong>First post coming soon.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── LAW x AI DIRECTION ── -->
+<section class="section" id="direction">
+  <div class="container">
+    <span class="label">Law x AI Direction</span>
+    <h2 class="s-heading" style="margin-bottom:3.5rem;">
+      Where this is going.<br>
+      <em>Research and build direction.</em>
+    </h2>
+    <div class="direction-grid">
+      <div class="dir-card">
+        <div class="dir-heading">// Research Focus</div>
+        <div class="dir-tags">
+          <span class="dir-tag">EU AI Act</span>
+          <span class="dir-tag">GDPR</span>
+          <span class="dir-tag">Biometric Surveillance</span>
+          <span class="dir-tag">Social Scoring</span>
+          <span class="dir-tag">Manipulative AI</span>
+          <span class="dir-tag">Fundamental Rights</span>
+          <span class="dir-tag">Cross-Border Compliance</span>
+          <span class="dir-tag">AI Governance</span>
+          <span class="dir-tag">Algorithmic Accountability</span>
+          <span class="dir-tag">Responsible AI</span>
+        </div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-heading">// Build Direction</div>
+        <div class="dir-tags">
+          <span class="dir-tag">AI Agents</span>
+          <span class="dir-tag">Claude Code</span>
+          <span class="dir-tag">Legal Technology</span>
+          <span class="dir-tag">AI Governance</span>
+          <span class="dir-tag">Compliance Operations</span>
+          <span class="dir-tag">Legal Operations</span>
+          <span class="dir-tag">AI-Assisted Research</span>
+          <span class="dir-tag">Client-Intake Systems</span>
+          <span class="dir-tag">Document Generation</span>
+          <span class="dir-tag">Workflow Automation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CONTACT ── -->
+<section class="section contact-wrap" id="contact">
+  <div class="container">
+    <span class="label" style="display:block;text-align:center;">Contact</span>
+    <h2 class="contact-h">Let's work together.</h2>
+    <p class="contact-p">
+      I'm actively seeking roles at the intersection of law, AI, and legal technology —
+      paralegal, legal-tech, or AI governance. If you're building something at that
+      frontier, I want to be involved.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:o.dildar@outlook.com" class="btn btn-primary">o.dildar@outlook.com</a>
+      <a href="tel:+447504828622"           class="btn btn-ghost">+44 7504 828622</a>
+      <a href="https://linkedin.com/in/omar-dildar" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Omar Dildar · Law x AI · London</p>
+</footer>
+
+<!-- ── GSAP via CDN ── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  const EXPO = 'power3.out';
+
+  // ── NAV ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), { passive: true });
+
+  // ── MOBILE NAV ──
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobNav').classList.add('open'));
+  document.getElementById('mobClose').addEventListener('click', closeMob);
+  function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
+
+  // ── HERO MOUSE PARALLAX ──
+  document.addEventListener('mousemove', e => {
+    gsap.to('#heroBg', {
+      x: (e.clientX / innerWidth  - .5) * 22,
+      y: (e.clientY / innerHeight - .5) * 22,
+      duration: 1.4, ease: 'power1.out'
+    });
+  });
+
+  // ── PRELOADER → HERO REVEAL ──
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('preloader').classList.add('out');
+      heroReveal();
+    }, 750);
+  });
+
+  function heroReveal() {
+    function splitToWords(el) {
+      const words = el.textContent.trim().split(/\s+/);
+      el.innerHTML = words.map(w => `<span class="word">${w}</span>`).join('&nbsp;');
+      return el.querySelectorAll('.word');
+    }
+    const w1 = splitToWords(document.querySelector('.hero-name-first'));
+    const w2 = splitToWords(document.querySelector('.hero-name-last'));
+
+    const tl = gsap.timeline();
+    tl.to('#eyebrow',            { visibility: 'visible', opacity: 1, y: 0, duration: .001 })
+      .from('#eyebrow',          { y: 16, opacity: 0, duration: .9, ease: EXPO })
+      .set([...w1, ...w2],       { visibility: 'visible' })
+      .from([...w1, ...w2],      { y: 38, opacity: 0, duration: 1.1, ease: EXPO, stagger: .09 }, '-=.5')
+      .to('#tagline',            { visibility: 'visible', duration: .001 }, '-=.4')
+      .from('#tagline',          { y: 22, opacity: 0, duration: 1.0, ease: EXPO }, '-=.4')
+      .set('.hero-pill',         { visibility: 'visible' })
+      .from('.hero-pill',        { y: 14, opacity: 0, duration: .75, ease: EXPO, stagger: .07 }, '-=.5')
+      .set('.hero-actions .btn', { visibility: 'visible' })
+      .from('.hero-actions .btn',{ y: 14, opacity: 0, duration: .75, ease: EXPO, stagger: .1  }, '-=.4')
+      .set('#heroScroll',        { visibility: 'visible' })
+      .from('#heroScroll',       { opacity: 0, duration: 1.0 }, '-=.2');
+  }
+
+  // ── SCROLL REVEAL HELPER ──
+  function reveal(targets, opts = {}) {
+    gsap.from(targets, {
+      y: opts.y ?? 32, opacity: 0,
+      duration: opts.dur ?? 1.0,
+      ease: EXPO,
+      stagger: opts.stagger ?? 0,
+      scrollTrigger: { trigger: opts.trigger ?? targets, start: 'top 82%', once: true, ...opts.st }
+    });
+  }
+
+  // ── STATS ──
+  reveal('.stat', { stagger: .12, trigger: '#stats', st: { start: 'top 85%' } });
+  document.querySelectorAll('.counter').forEach(el => {
+    const obj = { n: 0 };
+    gsap.to(obj, {
+      n: +el.dataset.target, duration: 2.2, ease: 'power2.out',
+      onUpdate() { el.textContent = Math.floor(obj.n); },
+      onComplete() { el.textContent = el.dataset.target; },
+      scrollTrigger: { trigger: '#stats', start: 'top 85%', once: true }
+    });
+  });
+
+  // ── ABOUT ──
+  reveal(['#about .label', '#about .s-heading'], { stagger: .12, trigger: '#about' });
+  reveal('.about-body', { stagger: .12, trigger: '#about', st: { start: 'top 86%' } });
+  reveal('.attr', { y: 14, stagger: .05, trigger: '.attr-list', st: { start: 'top 90%' } });
+  reveal('.ev-item', { y: 16, stagger: .08, trigger: '.evidence-block', st: { start: 'top 82%' } });
+
+  // ── EXPERIENCE ──
+  reveal(['#experience .label', '#experience .s-heading'], { stagger: .12, trigger: '#experience' });
+  reveal('#cfCard', { y: 24, trigger: '#cfCard', st: { start: 'top 85%' } });
+  gsap.to('#tlTrack', {
+    scaleY: 1, ease: 'none',
+    scrollTrigger: { trigger: '#timeline', start: 'top 70%', end: 'bottom 85%', scrub: .6 }
+  });
+  gsap.from('.tl-item', {
+    x: -28, opacity: 0, duration: 1.0, ease: EXPO, stagger: .16,
+    scrollTrigger: { trigger: '#timeline', start: 'top 75%', once: true }
+  });
+
+  // ── SIGNALS ──
+  reveal(['#signals .label', '#signals .s-heading'], { stagger: .12, trigger: '#signals' });
+  reveal('.r-card', { stagger: .15, trigger: '.r-grid-3' });
+
+  // ── RESEARCH ──
+  reveal(['#research .label', '#research .s-heading'], { stagger: .12, trigger: '#research' });
+  reveal('.pull-quote', { y: 24, trigger: '.pull-quote', st: { start: 'top 82%' } });
+  reveal('.research-abstract p', { stagger: .15, y: 20, trigger: '.research-abstract', st: { start: 'top 84%' } });
+  reveal('.findings-list li', { stagger: .07, y: 14, trigger: '.research-findings', st: { start: 'top 84%' } });
+  reveal('.research-tags .attr', { stagger: .05, y: 10, trigger: '.research-tags', st: { start: 'top 88%' } });
+
+  // ── PROJECTS ──
+  reveal(['#projects .label', '#projects .s-heading'], { stagger: .12, trigger: '#projects' });
+  reveal('.proj-card', { stagger: .18, trigger: '.projects-grid', st: { start: 'top 80%' } });
+
+  // ── SKILLS ──
+  reveal(['#skills .label', '#skills .s-heading'], { stagger: .12, trigger: '#skills' });
+  reveal('.cap-item', { y: 16, stagger: .09, trigger: '.cap-list', st: { start: 'top 80%' } });
+  reveal('.skill-grp', { stagger: .12, trigger: '.skills-layout', st: { start: 'top 78%' } });
+
+  // ── EDUCATION ──
+  reveal(['#education .label', '#education .s-heading'], { stagger: .12, trigger: '#education' });
+  reveal('.edu-card', { stagger: .15, trigger: '.edu-grid' });
+
+  // ── COMBAT ──
+  reveal(['#combat .label', '#combat .s-heading'], { stagger: .12, trigger: '#combat' });
+  reveal('.combat-img-placeholder', { y: 32, trigger: '#combat', st: { start: 'top 78%' } });
+  reveal('#combat .about-body', { stagger: .12, trigger: '#combat', st: { start: 'top 78%' } });
+  reveal('#combat .attr-list .attr', { y: 12, stagger: .05, trigger: '#combat .attr-list', st: { start: 'top 88%' } });
+
+  // ── NOTES ──
+  reveal(['#notes .label', '#notes .s-heading'], { stagger: .12, trigger: '#notes' });
+  reveal('.notes-coming', { y: 28, trigger: '#notes', st: { start: 'top 82%' } });
+
+  // ── DIRECTION ──
+  reveal(['#direction .label', '#direction .s-heading'], { stagger: .12, trigger: '#direction' });
+  reveal('.dir-card', { stagger: .15, trigger: '.direction-grid' });
+  reveal('.dir-tag',  { y: 10, stagger: .04, trigger: '.direction-grid', st: { start: 'top 75%' } });
+
+  // ── CONTACT ──
+  reveal(['.contact-h', '.contact-p', '.contact-row'], { stagger: .15, trigger: '#contact', st: { start: 'top 82%' } });
+</script>
+</body>
+</html>
